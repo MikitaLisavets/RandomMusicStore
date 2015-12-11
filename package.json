@@ -1,0 +1,21 @@
+{
+  "name": "random_music_store",
+  "version": "1.0.0",
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MikitaLisavets/randomMusicStore.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MikitaLisavets/randomMusicStore/issues"
+  },
+  "homepage": "https://github.com/MikitaLisavets/randomMusicStore",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-less": "^3.0.5",
+    "gulp-server-livereload": "^1.5.4",
+    "less-plugin-autoprefix": "^1.5.1"
+  }
+}

@@ -1,0 +1,157 @@
+@color-1: #5AADE6;
+@color-2: #FFE755;
+@color-3: #ED486F;
+@color-4: #C36BFF;
+@color-5: #195DB0;
+@color-6: #76246A;
+
+@animation-speed: 2s;
+@animation-delay: -1s;
+
+body {
+  background: #E4EBF1;
+}
+
+.triangle {
+  width: 0;
+  height: 0;
+  border-width: 0 25px 50px 25px;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) #000 rgba(0, 0, 0, 0);
+  &_1 {
+    border-bottom-color: @color-1;
+    animation: color-1 @animation-speed infinite;
+  }
+  &_2 {
+    border-bottom-color: @color-2;
+    animation: color-2 @animation-speed infinite;
+  }
+  &_3 {
+    border-bottom-color: @color-3;
+    animation: color-3 @animation-speed infinite;
+  }
+  &_4 {
+    border-bottom-color: @color-1;
+    animation: color-1 @animation-speed infinite @animation-delay;
+  }
+  &_5 {
+    border-bottom-color: @color-2;
+    animation: color-2 @animation-speed infinite @animation-delay;
+  }
+  &_6 {
+    border-bottom-color: @color-3;
+    animation: color-3 @animation-speed infinite @animation-delay;
+  }
+}
+
+.loader {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  display: none;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  &_active {
+    display: block;
+  }
+  &__item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    &_right-top {
+      transform: translate(100%, 0) rotate(90deg);
+      animation: move-1 @animation-speed infinite;
+    }
+    &_right {
+      transform: translate(100%, 50%) rotate(-90deg);
+      animation: move-2 @animation-speed infinite;
+    }
+    &_right-bottom {
+      transform: translate(100%, 100%) rotate(90deg);
+      animation: move-3 @animation-speed infinite;
+    }
+    &_left-bottom {
+      transform: translate(0, 100%) rotate(-90deg);
+      animation: move-4 @animation-speed infinite;
+    }
+    &_left {
+      transform: translate(0, 50%) rotate(90deg);
+      animation: move-5 @animation-speed infinite;
+    }
+    &_left-top {
+      transform: translate(0, 0) rotate(-90deg);
+      animation: move-6 @animation-speed infinite;
+    }
+  }
+}
+
+@keyframes color-1 {
+  50% {
+    border-bottom-color: @color-4;
+  }
+}
+@keyframes color-2 {
+  50% {
+    border-bottom-color: @color-5;
+  }
+}
+@keyframes color-3 {
+  50% {
+    border-bottom-color: @color-6;
+  }
+}
+
+@keyframes move-1 {
+  50% {
+    transform: translate(100%, 100%) rotate(360deg);
+  }
+  100% {
+    transform: translate(100%, 0) rotate(450deg);
+  }
+}
+
+@keyframes move-2 {
+  50% {
+    transform: translate(50%, 100%) rotate(180deg);
+  }
+  100% {
+    transform: translate(100%, 50%) rotate(270deg);
+  }
+}
+
+@keyframes move-3 {
+  50% {
+    transform: translate(0, 100%) rotate(360deg);
+  }
+  100% {
+    transform: translate(100%, 100%) rotate(450deg);
+  }
+}
+
+@keyframes move-4 {
+  50% {
+    transform: translate(0, 0) rotate(180deg);
+  }
+  100% {
+    transform: translate(0, 100%) rotate(270deg);
+  }
+}
+
+@keyframes move-5 {
+  50% {
+    transform: translate(50%, 0) rotate(360deg);
+  }
+  100% {
+    transform: translate(0, 50%) rotate(450deg);
+  }
+}
+
+@keyframes move-6 {
+  50% {
+    transform: translate(100%, 0) rotate(180deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(270deg);
+  }
+}
