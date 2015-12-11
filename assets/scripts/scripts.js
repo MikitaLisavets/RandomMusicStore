@@ -24,9 +24,11 @@
     var xmlhttp = getXmlHttp(),
         request = 'http://ccmixter.org/api/query?f=js';
     xmlhttp.open('GET', request, true);
+    loader.classList.add('loader_active');
     xmlhttp.onreadystatechange = function() {
       if (xmlhttp.readyState == 4) {
        if(xmlhttp.status == 200) {
+         loader.classList.remove('loader_active');
          console.log(JSON.parse(xmlhttp.responseText));
         }
       }
