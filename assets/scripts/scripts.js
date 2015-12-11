@@ -1,11 +1,8 @@
 (function() {
   var loader = document.getElementById('loader');
 
+  getRequest();
 
-
-  // ***********************//
-  //       Functions.       //
-  //***********************//
   function getXmlHttp(){
     var xmlhttp;
     try {
@@ -28,7 +25,7 @@
     xmlhttp.open('GET', request, true);
     xmlhttp.send(null);
     if(xmlhttp.status == 200) {
-      console.log(xmlhttp.responseText);
+      console.log( JSON.parse(xmlhttp.responseText) );
     }
 
   }
