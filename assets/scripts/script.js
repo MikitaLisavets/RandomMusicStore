@@ -1,51 +1,80 @@
+'use strict';
 (function() {
-  var loader = document.getElementById('loader'),
+  var body = document.getElementById('body'),
+      loader = document.getElementById('loader'),
       search = document.getElementById('search'),
-      title = document.getElementById('title'),
-      userName = document.getElementById('user-name'),
-      userAlias = document.getElementById('user-alias'),
-      url = document.getElementById('url'),
-      download = document.getElementById('download'),
+      music = document.getElementById('music'),
+      card = document.getElementById('card'),
+      download = document.getElementById('downloads'),
       player = document.getElementById('player');
 
 
   search.addEventListener('click', searchFunc);
 
   function searchFunc() {
-    var config = {};
+    var config = {
+      lic: 'by'
+    };
+
     getRequest(config, function(data) {
       console.table(data);
-      title.innerHTML = data[0].upload_name;
-      userName.innerHTML = data[0].user_real_name;
-      userAlias.innerHTML = data[0].user_name === data[0].user_real_name ? '' : data[0].user_name;
-      url.href = data[0].file_page_url;
-      url.innerHTML = data[0].file_page_url;
-
-      download.href = data[0].files[0].download_url;
-      download.innerHTML = data[0].files[0].file_name;
+      var dataFiles = data[0].files,
+          downloadsList = '';
 
       player.innerHTML = '';
-      createPlayer(data[0].files[0].download_url, data[0].files[0].file_format_info.mime_type);
+      download.innerHTML = '';
+      for (var i = 0; i < dataFiles.length; i++) {
+        downloadsList += '<li class="downloads__item"> \
+                            <div class="downloads__text"> \
+                              <span class="downloads__text-title">'+ dataFiles[i].file_name +'</span> \
+                              <span class="downloads__text-size">'+ dataFiles[i].file_filesize +'</span> \
+                            </div> \
+                            <div class="downloads__controls">';
+        if (dataFiles[i].file_format_info['default-ext'] ===  "mp3") {
+          downloadsList += '<button class="downloads__play" data-src="'+ dataFiles[i].download_url +'" data-type="'+ dataFiles[i].file_format_info.mime_type +'">Play</button>'
+        }
+        downloadsList += '<a class="downloads__link" target="_blank" download href="'+ dataFiles[i].download_url +'">Download</a>\
+                            </div> \
+                          </li>';
+      }
+      download.innerHTML = downloadsList;
 
-      loader.classList.remove('loader_active');
+      downloadsList = download.querySelectorAll('.downloads__play');
+
+      for (var i = 0; i < downloadsList.length; i++) {
+        downloadsList[i].addEventListener('click', playFunc);
+      }
+
+      music.href = data[0].file_page_url;
+      music.innerHTML = '<span class="music__author">'+ data[0].user_name +':</span> <span class="music__song">'+ data[0].upload_name +'</span>';
+
+      card.classList.add('card_active');
+      body.classList.remove('body_loading');
     });
+  }
+
+  function playFunc(elem) {
+    var src = elem.srcElement.getAttribute('data-src'),
+        type = elem.srcElement.getAttribute('data-type');
+    createPlayer(src, type);
   }
 
   function createPlayer(src, type) {
     var audio = document.createElement("audio");
+    player.innerHTML = '';
     audio.setAttribute("controls", "");
+    audio.setAttribute("autoplay", "");
     audio.innerHTML = '<source id="player-source" src="' + src + '" type="' + type + '">'
-
     player.appendChild(audio);
   }
 
 
   function getRequest(config, cb) {
     var xmlhttp = getXmlHttp(),
-        request = 'http://ccmixter.org/api/query?f=js&rand=1&limit=1';
+        request = 'http://ccmixter.org/api/query?f=js&rand=1&limit=1&lic='+ config.lic +'&nocache=' + (new Date().getTime());
     xmlhttp.open('GET', request, true);
     xmlhttp.send(null);
-    loader.classList.add('loader_active');
+    body.classList.add('body_loading');
     xmlhttp.onreadystatechange = function() {
       if (xmlhttp.readyState == 4) {
        if(xmlhttp.status == 200) {

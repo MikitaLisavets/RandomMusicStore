@@ -23,7 +23,7 @@ gulp.task('webserver', function() {
 });
 
 gulp.task('watch', function() {
-  gulp.watch(['src/styles/**'], ['styles'])
+  gulp.watch(['src/styles/**'], ['styles']);
 });
 
-gulp.task('default', ['webserver', 'watch']);
+gulp.task('default', ['styles', 'webserver', 'watch']);
