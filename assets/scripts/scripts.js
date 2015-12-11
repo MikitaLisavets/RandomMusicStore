@@ -19,15 +19,17 @@
     }
     return xmlhttp;
   }
+
   function getRequest(config) {
     var xmlhttp = getXmlHttp(),
         request = 'http://ccmixter.org/api/query?f=js';
     xmlhttp.open('GET', request, true);
-    xmlhttp.send(null);
-    if(xmlhttp.status == 200) {
-      console.log( JSON.parse(xmlhttp.responseText) );
+    xmlhttp.onreadystatechange = function() {
+      if (xmlhttp.readyState == 4) {
+       if(xmlhttp.status == 200) {
+         console.log(JSON.parse(xmlhttp.responseText));
+        }
+      }
     }
-
   }
-
 })();
