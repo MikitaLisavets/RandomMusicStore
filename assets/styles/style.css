@@ -52,10 +52,10 @@
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-          
-  &_active {
-    opacity: 1;
-  }
+}
+
+.loader_active {
+  opacity: 1;
 }
 
 .loader__item {
