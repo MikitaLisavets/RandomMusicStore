@@ -51,6 +51,7 @@
       getVinil(function() {
         card.classList.add('card_active');
         body.classList.remove('body_loading');
+        vinil.classList.add('vinil_show');
         body.classList.add('body_loaded');
       });
 
@@ -60,9 +61,13 @@
   function getVinil(cb) {
     var nocache = new Date().getTime();
     vinil.innerHTML = '' +
-    '<div class="vinil__cover" style="background-image: url(https://unsplash.it/300/300/?random&nocache='+ nocache +'"></div>' +
-    '<div class="vinil__disk"><span class="vinil__disk-pic" style="background-image: url(https://unsplash.it/300/300/?random&nocache='+ nocache +')"></span></div>';
-    cb();
+    '<div class="vinil__cover" style="background-image: url(https://unsplash.it/150/150/?random&nocache='+ nocache +')"></div>' +
+    '<div class="vinil__disk"><span class="vinil__disk-pic" style="background-image: url(https://unsplash.it/150/150/?random&nocache='+ nocache +')"></span></div>';
+
+    var i = new Image();
+    i.src = 'https://unsplash.it/300/300/?random&nocache='+ nocache +')';
+    i.onload = cb;
+
   }
 
 
@@ -79,10 +84,6 @@
     audio.setAttribute("controls", "");
     audio.setAttribute("autoplay", "");
     audio.innerHTML = '<source id="player-source" class="player__source" src="' + src + '" type="' + type + '">'
-
-    audio.addEventListener('click', function() {
-      alert();
-    });
     player.appendChild(audio);
   }
 
@@ -92,6 +93,7 @@
         request = 'http://ccmixter.org/api/query?f=js&rand=1&limit=1&lic='+ config.lic +'&nocache=' + (new Date().getTime());
     xmlhttp.open('GET', request, true);
     xmlhttp.send(null);
+    vinil.classList.remove('vinil_show');
     body.classList.add('body_loading');
     body.classList.remove('body_loaded');
     xmlhttp.onreadystatechange = function() {

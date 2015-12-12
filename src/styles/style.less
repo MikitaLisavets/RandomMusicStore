@@ -95,6 +95,7 @@ body {
 
 .body {
   background: #E4EBF1;
+  font-family: helvetica, arial, sans-serif;
   &_loading {
     .loader {
       transition: opacity .3s linear .01s,
@@ -115,7 +116,7 @@ body {
 .page {
   transition: opacity .3s linear;
   text-align: center;
-  padding: 20px 0 60px;
+  padding: 20px 10px 60px;
 }
 
 .triangle {
@@ -209,6 +210,9 @@ body {
 
 .card {
   display: none;
+  width: 100%;
+  max-width: 320px;
+  margin: auto;
   &_active {
     display: block;
   }
@@ -225,7 +229,7 @@ body {
 
 .downloads {
   padding: 20px 10px;
-  display: inline-block;
+  display: block;
   background: #fff;
   border-radius: 4px;
   border: 1px solid #ccc;
@@ -233,6 +237,7 @@ body {
   list-style: none;
   &__item {
     margin-top: 20px;
+    word-break: break-word;
     &:first-child {
       margin-top: 0;
     }
@@ -246,29 +251,51 @@ body {
   }
   &__play {
     float: left;
+    font-size: 14px;
+    background: #444;
+    color: #fff;
+    border: none;
+    border-radius: 2px;
+    padding: 4px 10px;
+    cursor: pointer;
   }
   &__link {
     float: right;
+    padding: 4px 0;
+    color: #444;
+    font-size: 14px;
+    &:hover {
+      text-decoration: none;
+    }
   }
 }
 
 .player {
+  position: fixed;
+  z-index: 100;
+  width: 100%;
+  bottom: 0;
+  left: 0;
   &__inner {
     width: 100%;
-    position: fixed;
-    z-index: 100;
-    bottom: 0;
-    left: 0;
+  position: absolute;
+  bottom: 0;
+  left: 0;
   }
 }
 
 .vinil {
+  transition: opacity .2s linear;
   position: relative;
   width: 150px;
   height: 150px;
   margin: auto;
+  opacity: 0;
+  &_show {
+    opacity: 1;
+  }
   &__cover {
-    transition: transform .5s linear;
+    transition: all .5s linear;
     width: 100%;
     height: 100%;
     position: absolute;
@@ -279,9 +306,10 @@ body {
     transform: translate(-20px, 0);
     background-color: #444;
     border-radius: 2px;
+    box-shadow: inset 0 0 15px 0 rgba(0, 0, 0, .5);
   }
   &__disk {
-    transition: transform .5s linear;
+    transition: all .5s linear;
     width: 100%;
     height: 100%;
     position: absolute;
