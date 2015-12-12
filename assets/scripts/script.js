@@ -48,10 +48,23 @@
       music.href = data[0].file_page_url;
       music.innerHTML = '<span class="music__author">'+ data[0].user_name +':</span> <span class="music__song">'+ data[0].upload_name +'</span>';
 
-      card.classList.add('card_active');
-      body.classList.remove('body_loading');
+      getVinil(function() {
+        card.classList.add('card_active');
+        body.classList.remove('body_loading');
+        body.classList.add('body_loaded');
+      });
+
     });
   }
+
+  function getVinil(cb) {
+    var nocache = new Date().getTime();
+    vinil.innerHTML = '' +
+    '<div class="vinil__cover" style="background-image: url(https://unsplash.it/300/300/?random&nocache='+ nocache +'"></div>' +
+    '<div class="vinil__disk"><span class="vinil__disk-pic" style="background-image: url(https://unsplash.it/300/300/?random&nocache='+ nocache +')"></span></div>';
+    cb();
+  }
+
 
   function playFunc(elem) {
     var src = elem.srcElement.getAttribute('data-src'),
@@ -62,9 +75,14 @@
   function createPlayer(src, type) {
     var audio = document.createElement("audio");
     player.innerHTML = '';
+    audio.className = 'player__inner';
     audio.setAttribute("controls", "");
     audio.setAttribute("autoplay", "");
-    audio.innerHTML = '<source id="player-source" src="' + src + '" type="' + type + '">'
+    audio.innerHTML = '<source id="player-source" class="player__source" src="' + src + '" type="' + type + '">'
+
+    audio.addEventListener('click', function() {
+      alert();
+    });
     player.appendChild(audio);
   }
 
@@ -75,6 +93,7 @@
     xmlhttp.open('GET', request, true);
     xmlhttp.send(null);
     body.classList.add('body_loading');
+    body.classList.remove('body_loaded');
     xmlhttp.onreadystatechange = function() {
       if (xmlhttp.readyState == 4) {
        if(xmlhttp.status == 200) {
