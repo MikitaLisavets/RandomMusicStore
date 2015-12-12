@@ -231,6 +231,30 @@ body {
   opacity: 0;
   pointer-events: none;
 }
+.body_preload .overlay {
+  transition: opacity .3s linear .01s,
+                  -webkit-transform .01s linear;
+  transition: opacity .3s linear .01s,
+                  transform .01s linear;
+  transition: opacity .3s linear .01s,
+                  transform .01s linear,
+                  -webkit-transform .01s linear;
+  opacity: 1;
+  -webkit-transform: translate(0, 0);
+          transform: translate(0, 0);
+}
+.body_preload .loader {
+  transition: opacity .3s linear .01s,
+                  -webkit-transform .01s linear;
+  transition: opacity .3s linear .01s,
+                  transform .01s linear;
+  transition: opacity .3s linear .01s,
+                  transform .01s linear,
+                  -webkit-transform .01s linear;
+  opacity: 1;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
 .page {
   transition: opacity .3s linear;
   text-align: center;
@@ -277,6 +301,25 @@ body {
   -webkit-animation: color-3 2s infinite -1s;
           animation: color-3 2s infinite -1s;
 }
+.overlay {
+  width: 100%;
+  height: 100%;
+  z-index: 50;
+  background: #fff;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: opacity .3s linear,
+              -webkit-transform .01s linear .3s;
+  transition: opacity .3s linear,
+              transform .01s linear .3s;
+  transition: opacity .3s linear,
+              transform .01s linear .3s,
+              -webkit-transform .01s linear .3s;
+  -webkit-transform: translate(-1000%, 0);
+          transform: translate(-1000%, 0);
+  opacity: 0;
+}
 .loader {
   transition: opacity .3s linear,
               -webkit-transform .01s linear .3s;
@@ -293,6 +336,7 @@ body {
   left: 50vw;
   -webkit-transform: translate(-1000%, -50%);
           transform: translate(-1000%, -50%);
+  z-index: 100;
 }
 .loader__item {
   position: absolute;

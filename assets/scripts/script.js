@@ -11,6 +11,12 @@
 
   search.addEventListener('click', searchFunc);
 
+  var i = new Image();
+  i.src = 'assets/images/background.jpg';
+  i.onload = function() {
+    body.classList.remove('body_preload');
+  }
+
   function searchFunc() {
     var config = {
       lic: 'by'
