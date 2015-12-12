@@ -161,8 +161,25 @@ body {
   margin: 0;
 }
 .body {
-  background: #E4EBF1;
+  background: #f4f7f7;
   font-family: helvetica, arial, sans-serif;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.body_initial {
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.body_initial .page {
+  padding: 0;
+}
+.body_initial .button {
+  margin-bottom: 0;
 }
 .body_loading .loader {
   transition: opacity .3s linear .01s,
@@ -177,12 +194,13 @@ body {
           transform: translate(-50%, -50%);
 }
 .body_loading .page {
-  opacity: .5;
+  opacity: 0;
   pointer-events: none;
 }
 .page {
   transition: opacity .3s linear;
   text-align: center;
+  width: 100%;
   padding: 20px 10px 60px;
 }
 .triangle {
@@ -289,7 +307,7 @@ body {
   border-radius: 40px;
   font-size: 18px;
   cursor: pointer;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 .button:hover {
   background: #444;
@@ -298,16 +316,22 @@ body {
 .card {
   display: none;
   width: 100%;
-  max-width: 320px;
+  max-width: 480px;
   margin: auto;
 }
 .card_active {
   display: block;
 }
+.card__info,
+.card__vinil,
+.card__downloads {
+  margin-bottom: 20px;
+}
 .music {
   text-decoration: none;
   font-size: 20px;
   color: #444;
+  word-break: break-word;
 }
 .music:hover {
   text-decoration: underline;
@@ -315,21 +339,26 @@ body {
 .downloads {
   padding: 20px 10px;
   display: block;
+  margin: 0;
   background: #fff;
-  border-radius: 4px;
+  border-radius: 2px;
   border: 1px solid #ccc;
   box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.15);
   list-style: none;
 }
 .downloads__item {
-  margin-top: 20px;
+  margin-top: 10px;
+  padding-top: 10px;
   word-break: break-word;
+  border-top: 1px dashed #444;
 }
 .downloads__item:first-child {
   margin-top: 0;
+  border-top: none;
 }
 .downloads__text {
-  font-size: 14px;
+  font-size: 12px;
+  text-align: left;
 }
 .downloads__controls {
   overflow: hidden;
@@ -374,9 +403,26 @@ body {
   height: 150px;
   margin: auto;
   opacity: 0;
+  display: block;
 }
 .vinil_show {
   opacity: 1;
+}
+.vinil__trigger {
+  opacity: 0;
+  position: absolute;
+  width: 0;
+  height: 0;
+  border: none;
+  background: none;
+}
+.vinil__trigger:checked ~ .vinil__cover {
+  -webkit-transform: translate(-50px, 0);
+          transform: translate(-50px, 0);
+}
+.vinil__trigger:checked ~ .vinil__disk {
+  -webkit-transform: translate(50px, 0) rotate(30deg);
+          transform: translate(50px, 0) rotate(30deg);
 }
 .vinil__cover {
   transition: all .5s linear;
@@ -427,12 +473,4 @@ body {
   margin: -2px 0 0 -2px;
   background: #000;
   border-radius: 50%;
-}
-.vinil:hover .vinil__cover {
-  -webkit-transform: translate(-50px, 0);
-          transform: translate(-50px, 0);
-}
-.vinil:hover .vinil__disk {
-  -webkit-transform: translate(50px, 0) rotate(30deg);
-          transform: translate(50px, 0) rotate(30deg);
 }

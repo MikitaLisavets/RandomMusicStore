@@ -33,7 +33,7 @@
         if (dataFiles[i].file_format_info['default-ext'] ===  "mp3") {
           downloadsList += '<button class="downloads__play" data-src="'+ dataFiles[i].download_url +'" data-type="'+ dataFiles[i].file_format_info.mime_type +'">Play</button>'
         }
-        downloadsList += '<a class="downloads__link" download href="'+ dataFiles[i].download_url +'">Download</a>\
+        downloadsList += '<a class="downloads__link" target="_blank" download href="'+ dataFiles[i].download_url +'">Download</a>\
                             </div> \
                           </li>';
       }
@@ -46,7 +46,7 @@
       }
 
       music.href = data[0].file_page_url;
-      music.innerHTML = '<span class="music__author">'+ data[0].user_name +':</span> <span class="music__song">'+ data[0].upload_name +'</span>';
+      music.innerHTML = '<span class="music__author">'+ data[0].user_name +' -</span> <span class="music__song">'+ data[0].upload_name +'</span>';
 
       getVinil(function() {
         card.classList.add('card_active');
@@ -61,6 +61,7 @@
   function getVinil(cb) {
     var nocache = new Date().getTime();
     vinil.innerHTML = '' +
+    '<input class="vinil__trigger" type="checkbox">' +
     '<div class="vinil__cover" style="background-image: url(https://unsplash.it/150/150/?random&nocache='+ nocache +')"></div>' +
     '<div class="vinil__disk"><span class="vinil__disk-pic" style="background-image: url(https://unsplash.it/150/150/?random&nocache='+ nocache +')"></span></div>';
 
@@ -96,6 +97,7 @@
     vinil.classList.remove('vinil_show');
     body.classList.add('body_loading');
     body.classList.remove('body_loaded');
+    body.classList.remove('body_initial');
     xmlhttp.onreadystatechange = function() {
       if (xmlhttp.readyState == 4) {
        if(xmlhttp.status == 200) {
