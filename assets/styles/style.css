@@ -170,9 +170,8 @@ body {
 }
 .body:before {
   content: '';
-  position: absolute;
+  position: fixed;
   background: url(../images/background.jpg) 50%;
-  background-attachment: fixed;
   background-size: cover;
   top: 0;
   left: 0;
