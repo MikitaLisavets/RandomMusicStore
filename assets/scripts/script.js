@@ -31,7 +31,7 @@
                             </div> \
                             <div class="downloads__controls">';
         if (dataFiles[i].file_format_info['default-ext'] ===  "mp3") {
-          downloadsList += '<button class="downloads__play" data-src="'+ dataFiles[i].download_url +'" data-type="'+ dataFiles[i].file_format_info.mime_type +'">Play</button>'
+          downloadsList += '<button class="downloads__play" data-src="'+ dataFiles[i].download_url +'" data-type="'+ dataFiles[i].file_format_info.mime_type +'">Player</button>'
         }
         downloadsList += '<a class="downloads__link" download href="'+ dataFiles[i].download_url +'">Download</a>\
                             </div> \
