@@ -33,7 +33,7 @@
         if (dataFiles[i].file_format_info['default-ext'] ===  "mp3") {
           downloadsList += '<button class="downloads__play" data-src="'+ dataFiles[i].download_url +'" data-type="'+ dataFiles[i].file_format_info.mime_type +'">Play</button>'
         }
-        downloadsList += '<a class="downloads__link" target="_blank" download="sample" href="'+ dataFiles[i].download_url +'">Download</a>\
+        downloadsList += '<a class="downloads__link" download href="'+ dataFiles[i].download_url +'">Download</a>\
                             </div> \
                           </li>';
       }
@@ -82,8 +82,8 @@
     var audio = document.createElement("audio");
     player.innerHTML = '';
     audio.className = 'player__inner';
-    audio.setAttribute("controls", "");
-    audio.setAttribute("autoplay", "");
+    audio.setAttribute("controls", "controls");
+    audio.setAttribute("autoplay", "autoplay");
     audio.innerHTML = '<source id="player-source" class="player__source" src="' + src + '" type="' + type + '">'
     player.appendChild(audio);
   }
