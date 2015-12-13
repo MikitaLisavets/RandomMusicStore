@@ -80,9 +80,10 @@
   }
 
 
-  function playFunc(elem) {
-    var src = elem.srcElement.getAttribute('data-src'),
-        type = elem.srcElement.getAttribute('data-type');
+  function playFunc(e) {
+    var target = e.target || e.srcElement,
+        src = target.getAttribute('data-src'),
+        type = target.getAttribute('data-type');
     createPlayer(src, type);
   }
 
