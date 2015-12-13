@@ -204,9 +204,11 @@ body {
   opacity: .7;
 }
 .body_initial {
+  -webkit-box-align: center;
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
+  display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
@@ -220,6 +222,8 @@ body {
   margin-bottom: 0;
 }
 .body_loading .loader {
+  -webkit-transition: opacity .3s linear .01s,
+                  -webkit-transform .01s linear;
   transition: opacity .3s linear .01s,
                   -webkit-transform .01s linear;
   transition: opacity .3s linear .01s,
@@ -229,6 +233,7 @@ body {
                   -webkit-transform .01s linear;
   opacity: 1;
   -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
 }
 .body_loading .page {
@@ -236,6 +241,8 @@ body {
   pointer-events: none;
 }
 .body_preload .overlay {
+  -webkit-transition: opacity .3s linear .01s,
+                  -webkit-transform .01s linear;
   transition: opacity .3s linear .01s,
                   -webkit-transform .01s linear;
   transition: opacity .3s linear .01s,
@@ -245,9 +252,12 @@ body {
                   -webkit-transform .01s linear;
   opacity: 1;
   -webkit-transform: translate(0, 0);
+      -ms-transform: translate(0, 0);
           transform: translate(0, 0);
 }
 .body_preload .loader {
+  -webkit-transition: opacity .3s linear .01s,
+                  -webkit-transform .01s linear;
   transition: opacity .3s linear .01s,
                   -webkit-transform .01s linear;
   transition: opacity .3s linear .01s,
@@ -257,9 +267,11 @@ body {
                   -webkit-transform .01s linear;
   opacity: 1;
   -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
 }
 .page {
+  -webkit-transition: opacity .3s linear;
   transition: opacity .3s linear;
   text-align: center;
   width: 100%;
@@ -314,6 +326,8 @@ body {
   position: absolute;
   top: 0;
   left: 0;
+  -webkit-transition: opacity .3s linear,
+              -webkit-transform .01s linear .3s;
   transition: opacity .3s linear,
               -webkit-transform .01s linear .3s;
   transition: opacity .3s linear,
@@ -322,10 +336,13 @@ body {
               transform .01s linear .3s,
               -webkit-transform .01s linear .3s;
   -webkit-transform: translate(-1000%, 0);
+      -ms-transform: translate(-1000%, 0);
           transform: translate(-1000%, 0);
   opacity: 0;
 }
 .loader {
+  -webkit-transition: opacity .3s linear,
+              -webkit-transform .01s linear .3s;
   transition: opacity .3s linear,
               -webkit-transform .01s linear .3s;
   transition: opacity .3s linear,
@@ -340,6 +357,7 @@ body {
   top: 50vh;
   left: 50vw;
   -webkit-transform: translate(-1000%, -50%);
+      -ms-transform: translate(-1000%, -50%);
           transform: translate(-1000%, -50%);
   z-index: 100;
 }
@@ -350,41 +368,48 @@ body {
 }
 .loader__item_right-top {
   -webkit-transform: translate(100%, 0) rotate(90deg);
+      -ms-transform: translate(100%, 0) rotate(90deg);
           transform: translate(100%, 0) rotate(90deg);
   -webkit-animation: move-1 2s infinite;
           animation: move-1 2s infinite;
 }
 .loader__item_right {
   -webkit-transform: translate(100%, 50%) rotate(-90deg);
+      -ms-transform: translate(100%, 50%) rotate(-90deg);
           transform: translate(100%, 50%) rotate(-90deg);
   -webkit-animation: move-2 2s infinite;
           animation: move-2 2s infinite;
 }
 .loader__item_right-bottom {
   -webkit-transform: translate(100%, 100%) rotate(90deg);
+      -ms-transform: translate(100%, 100%) rotate(90deg);
           transform: translate(100%, 100%) rotate(90deg);
   -webkit-animation: move-3 2s infinite;
           animation: move-3 2s infinite;
 }
 .loader__item_left-bottom {
   -webkit-transform: translate(0, 100%) rotate(-90deg);
+      -ms-transform: translate(0, 100%) rotate(-90deg);
           transform: translate(0, 100%) rotate(-90deg);
   -webkit-animation: move-4 2s infinite;
           animation: move-4 2s infinite;
 }
 .loader__item_left {
   -webkit-transform: translate(0, 50%) rotate(90deg);
+      -ms-transform: translate(0, 50%) rotate(90deg);
           transform: translate(0, 50%) rotate(90deg);
   -webkit-animation: move-5 2s infinite;
           animation: move-5 2s infinite;
 }
 .loader__item_left-top {
   -webkit-transform: translate(0, 0) rotate(-90deg);
+      -ms-transform: translate(0, 0) rotate(-90deg);
           transform: translate(0, 0) rotate(-90deg);
   -webkit-animation: move-6 2s infinite;
           animation: move-6 2s infinite;
 }
 .button {
+  -webkit-transition: all .15s;
   transition: all .15s;
   color: #fff;
   background: none;
@@ -408,6 +433,8 @@ body {
   height: 80%;
   max-width: 480px;
   margin: auto;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
   -webkit-flex-direction: column;
       -ms-flex-direction: column;
           flex-direction: column;
@@ -415,6 +442,7 @@ body {
 .card_active {
   opacity: 1;
   position: relative;
+  display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
@@ -425,6 +453,7 @@ body {
 }
 .card__downloads {
   overflow: auto;
+  -webkit-box-flex: 1;
   -webkit-flex: 1;
       -ms-flex: 1;
           flex: 1;
@@ -509,6 +538,7 @@ body {
   left: 0;
 }
 .vinil {
+  -webkit-transition: opacity .2s linear;
   transition: opacity .2s linear;
   position: relative;
   width: 150px;
@@ -530,13 +560,16 @@ body {
 }
 .vinil__trigger:checked ~ .vinil__cover {
   -webkit-transform: translate(-50px, 0);
+      -ms-transform: translate(-50px, 0);
           transform: translate(-50px, 0);
 }
 .vinil__trigger:checked ~ .vinil__disk {
   -webkit-transform: translate(50px, 0) rotate(30deg);
+      -ms-transform: translate(50px, 0) rotate(30deg);
           transform: translate(50px, 0) rotate(30deg);
 }
 .vinil__cover {
+  -webkit-transition: all .5s linear;
   transition: all .5s linear;
   width: 100%;
   height: 100%;
@@ -546,12 +579,14 @@ body {
   z-index: 10;
   background-size: cover;
   -webkit-transform: translate(-20px, 0);
+      -ms-transform: translate(-20px, 0);
           transform: translate(-20px, 0);
   background-color: #444;
   border-radius: 2px;
   box-shadow: -2px -1px 2px rgba(0, 0, 0, 0.3), inset 0 0 15px 0 rgba(0, 0, 0, 0.5);
 }
 .vinil__disk {
+  -webkit-transition: all .5s linear;
   transition: all .5s linear;
   width: 90%;
   height: 90%;
@@ -562,6 +597,7 @@ body {
   background: url(../images/vinil.svg);
   background-size: cover;
   -webkit-transform: translate(20px, 0);
+      -ms-transform: translate(20px, 0);
           transform: translate(20px, 0);
 }
 .vinil__disk-pic {
@@ -573,6 +609,7 @@ body {
   left: 50%;
   border-radius: 50%;
   -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
 }
 .vinil__disk-pic:after {

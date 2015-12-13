@@ -2,7 +2,7 @@ var gulp = require('gulp'),
     less = require('gulp-less'),
     server = require('gulp-server-livereload'),
     LessPluginAutoPrefix = require('less-plugin-autoprefix'),
-    autoprefix= new LessPluginAutoPrefix({ browsers: ["last 2 versions"] });
+    autoprefix= new LessPluginAutoPrefix({ browsers: ["last 6 versions"] });
 
 gulp.task('styles', function () {
   return gulp.src('src/styles/style.less')
