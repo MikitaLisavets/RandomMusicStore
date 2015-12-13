@@ -23,7 +23,6 @@
     };
 
     getRequest(config, function(data) {
-      console.table(data);
       var dataFiles = data[0].files,
           downloadsList = '';
 
