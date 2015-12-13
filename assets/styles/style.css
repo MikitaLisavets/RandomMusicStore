@@ -230,6 +230,9 @@ body {
       -ms-flex-direction: column;
           flex-direction: column;
 }
+.body_initial .card {
+  display: none;
+}
 .body_initial .button {
   margin-bottom: 0;
 }
