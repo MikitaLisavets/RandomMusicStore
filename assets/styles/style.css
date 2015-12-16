@@ -194,6 +194,8 @@ body {
   position: relative;
 }
 .body:before {
+  -webkit-transition: opacity .1s linear;
+  transition: opacity .1s linear;
   content: '';
   position: absolute;
   background: url(../images/background.jpg) 50%;
@@ -203,32 +205,6 @@ body {
   width: 100%;
   height: 100%;
   opacity: .7;
-}
-.body_initial {
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-.body_initial .page {
-  height: 100vh;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-      -ms-flex-direction: column;
-          flex-direction: column;
 }
 .body_initial .card {
   display: none;
@@ -295,6 +271,26 @@ body {
   padding: 20px 10px;
   position: relative;
   z-index: 10;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 .triangle {
   width: 0;
@@ -445,56 +441,63 @@ body {
   opacity: 0;
   position: absolute;
   width: 100%;
-  height: 80%;
   max-width: 480px;
-  margin: auto;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  margin: 0;
 }
 .card_active {
   opacity: 1;
   position: relative;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
 }
 .card__info,
 .card__vinil {
   margin-bottom: 20px;
 }
+.card__vinil {
+  font-size: 0;
+  line-height: 0;
+}
 .card__downloads {
-  overflow: auto;
-  -webkit-box-flex: 1;
-  -webkit-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
+  position: relative;
+  border-radius: 3px;
+  overflow: hidden;
+}
+.card__downloads:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 10px;
+  bottom: 0;
+  left: 0;
+  background: -webkit-gradient(linear, left bottom, left top, from(rgba(255, 255, 255, 0.9)), to(rgba(255, 255, 255, 0)));
+  background: -webkit-linear-gradient(bottom, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0) 100%);
+  background: linear-gradient(to top, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0) 100%);
 }
 .music {
+  -webkit-transition: border .15s linear;
+  transition: border .15s linear;
   text-decoration: none;
   font-size: 1.4rem;
   line-height: 1.5rem;
   color: #fff;
   word-break: break-word;
   display: inline;
-  text-decoration: underline;
+  border-bottom: 2px solid #fff;
 }
 .music:hover {
-  text-decoration: none;
+  border-bottom-color: rgba(0, 0, 0, 0);
 }
 .downloads {
   padding: 0 10px;
   display: block;
   margin: 0;
   background: rgba(255, 255, 255, 0.9);
-  border-radius: 3px;
   border: 1px solid #ccc;
   -webkit-box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.15);
           box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.15);
   list-style: none;
+  position: relative;
+  max-height: 25vh;
+  overflow: auto;
 }
 .downloads__item {
   margin: 0;
@@ -560,8 +563,8 @@ body {
   width: 150px;
   height: 150px;
   margin: auto;
-  opacity: 0;
   display: block;
+  opacity: 0;
 }
 .vinil_show {
   opacity: 1;
@@ -575,47 +578,49 @@ body {
   background: none;
 }
 .vinil__trigger:checked ~ .vinil__cover {
-  -webkit-transform: translate(-50px, 0);
-      -ms-transform: translate(-50px, 0);
-          transform: translate(-50px, 0);
+  -webkit-transform: translate(-45px, 0);
+      -ms-transform: translate(-45px, 0);
+          transform: translate(-45px, 0);
 }
 .vinil__trigger:checked ~ .vinil__disk {
-  -webkit-transform: translate(50px, 0) rotate(30deg);
-      -ms-transform: translate(50px, 0) rotate(30deg);
-          transform: translate(50px, 0) rotate(30deg);
+  -webkit-transform: translate(45px, 0) rotate(40deg);
+      -ms-transform: translate(45px, 0) rotate(40deg);
+          transform: translate(45px, 0) rotate(40deg);
 }
 .vinil__cover {
-  -webkit-transition: all .5s linear;
-  transition: all .5s linear;
+  -webkit-transition: all .3s linear;
+  transition: all .3s linear;
   width: 100%;
   height: 100%;
   position: absolute;
+  cursor: pointer;
   top: 0;
   left: 0;
   z-index: 10;
   background-size: cover;
-  -webkit-transform: translate(-20px, 0);
-      -ms-transform: translate(-20px, 0);
-          transform: translate(-20px, 0);
+  -webkit-transform: translate(-15px, 0);
+      -ms-transform: translate(-15px, 0);
+          transform: translate(-15px, 0);
   background-color: #444;
   border-radius: 2px;
-  -webkit-box-shadow: -2px -1px 2px rgba(0, 0, 0, 0.3), inset 0 0 15px 0 rgba(0, 0, 0, 0.5);
-          box-shadow: -2px -1px 2px rgba(0, 0, 0, 0.3), inset 0 0 15px 0 rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.5), inset 0 0 15px 0 rgba(0, 0, 0, 0.5);
+          box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.5), inset 0 0 15px 0 rgba(0, 0, 0, 0.5);
 }
 .vinil__disk {
-  -webkit-transition: all .5s linear;
-  transition: all .5s linear;
+  -webkit-transition: all .3s linear;
+  transition: all .3s linear;
   width: 90%;
   height: 90%;
   position: absolute;
+  cursor: pointer;
   top: 5%;
   left: 5%;
   z-index: 5;
   background: url(../images/vinil.svg);
   background-size: cover;
-  -webkit-transform: translate(20px, 0);
-      -ms-transform: translate(20px, 0);
-          transform: translate(20px, 0);
+  -webkit-transform: translate(15px, 0);
+      -ms-transform: translate(15px, 0);
+          transform: translate(15px, 0);
 }
 .vinil__disk-pic {
   position: absolute;
@@ -625,6 +630,7 @@ body {
   top: 50%;
   left: 50%;
   border-radius: 50%;
+  opacity: .85;
   -webkit-transform: translate(-50%, -50%);
       -ms-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
@@ -632,11 +638,12 @@ body {
 .vinil__disk-pic:after {
   content: '';
   position: absolute;
-  width: 4px;
-  height: 4px;
+  width: 6px;
+  height: 6px;
   top: 50%;
   left: 50%;
-  margin: -2px 0 0 -2px;
-  background: #eee;
+  margin: -3px 0 0 -3px;
+  background: #666;
   border-radius: 50%;
+  border: 1px solid #333;
 }
