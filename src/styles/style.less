@@ -130,9 +130,6 @@ body {
     .card {
       display: none;
     }
-    .button {
-      margin-bottom: 0;
-    }
   }
   &_loading {
     .loader {
@@ -277,7 +274,6 @@ body {
   font-size: 1.2rem;
   line-height: 3rem;
   cursor: pointer;
-  margin-bottom: 20px;
   &:hover {
     background: #fff;
     color: #444;
@@ -290,6 +286,7 @@ body {
   width: 100%;
   max-width: 480px;
   margin: 0;
+  padding-top: 20px;
   &_active {
     opacity: 1;
     position: relative;
@@ -297,6 +294,10 @@ body {
   &__info,
   &__vinil {
     margin-bottom: 20px;
+  }
+  &__info {
+    max-height: 60px;
+    overflow: hidden;
   }
   &__vinil {
     font-size: 0;
@@ -322,7 +323,7 @@ body {
   transition: border .15s linear;
   text-decoration: none;
   font-size: 1.4rem;
-  line-height: 1.5rem;
+  line-height: 1.4;
   color: #fff;
   word-break: break-word;
   display: inline;
