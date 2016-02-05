@@ -288,6 +288,7 @@ body {
   -webkit-justify-content: center;
       -ms-flex-pack: center;
           justify-content: center;
+  overflow: hidden;
 }
 .triangle {
   width: 0;
@@ -647,4 +648,35 @@ body {
   background: #666;
   border-radius: 50%;
   border: 1px solid #333;
+}
+.tags {
+  -webkit-transition: background .15s linear;
+  transition: background .15s linear;
+  border-radius: 20px;
+  background: rgba(0, 0, 0, 0.2);
+  border: none;
+  margin-top: 10px;
+  padding: 0 10px;
+  text-align: center;
+  color: #fff;
+  height: 20px;
+}
+.tags::-webkit-input-placeholder {
+  color: #fff;
+}
+.tags:-moz-placeholder {
+  color: #fff;
+}
+.tags::-moz-placeholder {
+  color: #fff;
+}
+.tags:-ms-input-placeholder {
+  color: #fff;
+}
+.tags:placeholder-shown {
+  color: #fff;
+}
+.tags:hover,
+.tags:focus {
+  background: rgba(0, 0, 0, 0.5);
 }

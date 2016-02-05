@@ -6,6 +6,7 @@
       music = document.getElementById('music'),
       card = document.getElementById('card'),
       download = document.getElementById('downloads'),
+      tags = document.getElementById('tags'),
       player = document.getElementById('player');
 
 

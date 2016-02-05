@@ -173,6 +173,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 }
 
 .triangle {
@@ -482,5 +483,26 @@ body {
         border: 1px solid #333;
       }
     }
+  }
+}
+
+.tags {
+  transition: background .15s linear;
+  border-radius: 20px;
+  background: rgba(0, 0, 0, .2);
+  border: none;
+  margin-top: 10px;
+  padding: 0 10px;
+  text-align: center;
+  color: #fff;
+  height: 20px;
+  &::-webkit-input-placeholder {color: #fff;}
+  &:-moz-placeholder {color: #fff;}
+  &::-moz-placeholder {color: #fff;}
+  &:-ms-input-placeholder {color: #fff;}
+  &:placeholder-shown {color: #fff;}
+  &:hover,
+  &:focus {
+    background: rgba(0, 0, 0, .5);
   }
 }
