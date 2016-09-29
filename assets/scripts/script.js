@@ -24,7 +24,8 @@
 
     getRequest(config, function(data) {
       var dataFiles = data[0].files,
-          downloadsList = '';
+          downloadsList = '',
+          userName;
 
       player.innerHTML = '';
       download.innerHTML = '';
@@ -51,7 +52,8 @@
       }
 
       music.href = data[0].file_page_url;
-      music.innerHTML = '<span class="music__author">'+ data[0].user_name +' -</span> <span class="music__song">'+ data[0].upload_name +'</span>';
+      userName = data[0].user_real_name || data[0].user_name
+      music.innerHTML = '<span class="music__author">'+ userName +' -</span> <span class="music__song">'+ data[0].upload_name +'</span>';
 
       getVinil(function() {
         card.classList.add('card_active');
