@@ -75,13 +75,11 @@
     xmlhttp.onreadystatechange = function() {
       if (xmlhttp.readyState == 4) {
        if(xmlhttp.status == 200) {
-          console.log(xmlhttp);
           vinil.innerHTML = '' +
     '<input class="vinil__trigger" type="checkbox">' +
-    '<div class="vinil__cover" style="background-image: url(' + imageService + '?nocache='+ nocache +')"></div>' +
-    '<div class="vinil__disk"><span class="vinil__disk-pic" style="background-image: url(' + imageService + '?nocache='+ nocache +')"></span></div>';
-
-//           cb(JSON.parse(xmlhttp.responseText))
+    '<div class="vinil__cover" style="background-image: url(' + imageService + ')"></div>' +
+    '<div class="vinil__disk"><span class="vinil__disk-pic" style="background-image: url(' + imageService + ')"></span></div>';
+          cb()
         }
       }
     }
