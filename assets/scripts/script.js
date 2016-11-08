@@ -7,7 +7,7 @@
       card = document.getElementById('card'),
       download = document.getElementById('downloads'),
       player = document.getElementById('player'),
-      imageService = 'http://lorempixel.com/300/300/';
+      imageService = 'https://unsplash.it/300/300/';
 
 
   search.addEventListener('click', searchFunc);
@@ -69,7 +69,7 @@
   function getVinil(cb) {
     var nocache = new Date().getTime();
     var xmlhttp = getXmlHttp(),
-    request = imageService + '?nocache='+ nocache;
+    request = imageService + '?random&nocache='+ nocache;
     xmlhttp.open('GET', request, true);
     xmlhttp.send(null);
     xmlhttp.onreadystatechange = function() {
