@@ -73,7 +73,7 @@
     '<div class="vinil__disk"><span class="vinil__disk-pic" style="background-image: url(https://unsplash.it/300/300/?random&nocache='+ nocache +')"></span></div>';
 
     var i = new Image();
-    i.src = 'https://unsplash.it/300/300/?random&nocache='+ nocache +')';
+    i.src = 'http://lorempixel.com/300/300/';
     i.onload = function() {
       cb()
     }
