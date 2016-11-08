@@ -80,7 +80,8 @@
     '<div class="vinil__cover" style="background-image: url(' + imageUrl + ')"></div>' +
     '<div class="vinil__disk"><span class="vinil__disk-pic" style="background-image: url(' + imageUrl + ')"></span></div>';
           cb()
-        }
+        } else {
+          cb()
       }
     }
   }
