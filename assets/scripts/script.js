@@ -6,7 +6,8 @@
       music = document.getElementById('music'),
       card = document.getElementById('card'),
       download = document.getElementById('downloads'),
-      player = document.getElementById('player');
+      player = document.getElementById('player'),
+      imageService = 'http://lorempixel.com/300/300/';
 
 
   search.addEventListener('click', searchFunc);
@@ -69,13 +70,19 @@
     var nocache = new Date().getTime();
     vinil.innerHTML = '' +
     '<input class="vinil__trigger" type="checkbox">' +
-    '<div class="vinil__cover" style="background-image: url(http://lorempixel.com/300/300/?nocache='+ nocache +')"></div>' +
-    '<div class="vinil__disk"><span class="vinil__disk-pic" style="background-image: url(http://lorempixel.com/300/300/?nocache='+ nocache +')"></span></div>';
+    '<div class="vinil__cover" style="background-image: url(' + imageService + '?nocache='+ nocache +')"></div>' +
+    '<div class="vinil__disk"><span class="vinil__disk-pic" style="background-image: url(' + imageService + '?nocache='+ nocache +')"></span></div>';
 
-    var i = new Image();
-    i.src = 'http://lorempixel.com/300/300/';
-    i.onload = function() {
-      cb()
+    var xmlhttp = getXmlHttp(),
+    request = imageService + '?nocache='+ nocache;
+    xmlhttp.open('GET', request, true);
+    xmlhttp.send(null);
+    xmlhttp.onreadystatechange = function() {
+      if (xmlhttp.readyState == 4) {
+       if(xmlhttp.status == 200) {
+          cb(JSON.parse(xmlhttp.responseText))
+        }
+      }
     }
 
   }
