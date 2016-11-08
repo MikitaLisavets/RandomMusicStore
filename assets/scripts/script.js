@@ -73,7 +73,7 @@
     '<div class="vinil__disk"><span class="vinil__disk-pic" style="background-image: url(http://lorempixel.com/300/300/?nocache='+ nocache +')"></span></div>';
 
     var i = new Image();
-    i.src = 'http://lorempixel.com/300/300/?nocache='+ nocache;
+    i.src = 'http://lorempixel.com/300/300/';
     i.onload = function() {
       cb()
     }
