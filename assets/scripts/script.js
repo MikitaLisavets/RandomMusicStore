@@ -7,7 +7,7 @@
       card = document.getElementById('card'),
       download = document.getElementById('downloads'),
       player = document.getElementById('player'),
-      imageService = 'https://unsplash.it/300/300/';
+      imageService = 'https://unsplash.it/300/300/?random&nocache=';
 
 
   search.addEventListener('click', searchFunc);
@@ -69,16 +69,16 @@
   function getVinil(cb) {
     var nocache = new Date().getTime();
     var xmlhttp = getXmlHttp(),
-    request = imageService + '?random&nocache='+ nocache;
-    xmlhttp.open('GET', request, true);
+    imageUrl = imageService + nocache;
+    xmlhttp.open('GET', imageUrl, true);
     xmlhttp.send(null);
     xmlhttp.onreadystatechange = function() {
       if (xmlhttp.readyState == 4) {
        if(xmlhttp.status == 200) {
           vinil.innerHTML = '' +
     '<input class="vinil__trigger" type="checkbox">' +
-    '<div class="vinil__cover" style="background-image: url(' + imageService + ')"></div>' +
-    '<div class="vinil__disk"><span class="vinil__disk-pic" style="background-image: url(' + imageService + ')"></span></div>';
+    '<div class="vinil__cover" style="background-image: url(' + imageUrl + ')"></div>' +
+    '<div class="vinil__disk"><span class="vinil__disk-pic" style="background-image: url(' + imageUrl + ')"></span></div>';
           cb()
         }
       }
